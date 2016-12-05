@@ -179,20 +179,26 @@ void DrawWidget::stopAllAlgorithms()
     clearHull();
     resetMarkers();
     if(_jarvis!=0) {
-        _jarvis->terminate();
-        _jarvis->wait();
+        if (_jarvis->isRunning()) {
+            _jarvis->terminate();
+            _jarvis->wait();
+        }
         delete _jarvis;
         _jarvis = 0;
     }
     if(_graham!=0) {
-        _graham->terminate();
-        _graham->wait();
+        if (_graham->isRunning()) {
+            _graham->terminate();
+            _graham->wait();
+        }
         delete _graham;
         _graham = 0;
     }
     if(_divideAndConquer!=0) {
-        _divideAndConquer->terminate();
-        _divideAndConquer->wait();
+        if (_divideAndConquer->isRunning()) {
+            _divideAndConquer->terminate();
+            _divideAndConquer->wait();
+        }
         delete _divideAndConquer;
         _divideAndConquer = 0;
     }
@@ -321,6 +327,7 @@ void DrawWidget::clearAll()
 
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event)
     QPainter painter(this);
     int w = width();
     int h = height();

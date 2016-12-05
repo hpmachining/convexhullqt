@@ -2,7 +2,7 @@
 
 void DivideAndConquer::run()
 {
-    convexHull(_pointsArray,_convexHull);
+    convexHull(_pointsArray);
 }
 
 void DivideAndConquer::setInputData(int speed, const QVector<QPoint> &pointsArray)
@@ -40,7 +40,7 @@ double DivideAndConquer::getDelayMultiplier()
     return (100.0/_speed) * 0.5;
 }
 
-void DivideAndConquer::convexHull(const QVector<QPoint> &pointsArray, QVector<int> &convexHull)
+void DivideAndConquer::convexHull(const QVector<QPoint> &pointsArray)
 {
     QVector<int> pointsIndexes;
     for(int i=0;i<pointsArray.size();i++) {
@@ -113,7 +113,7 @@ QVector<int> DivideAndConquer::getHullFromSlice(const QVector<QPoint> &pointsArr
         emit setMerge(left,right);
         this->msleep(70 * getDelayMultiplier());
 
-        QVector<int> result = merge(pointsArray,pointsIndexes,left,right);
+        QVector<int> result = merge(pointsArray,left,right);
         emit resetMarkers();
         emit setHull(result);
         this->msleep(200 * getDelayMultiplier());
@@ -121,7 +121,7 @@ QVector<int> DivideAndConquer::getHullFromSlice(const QVector<QPoint> &pointsArr
     }
 }
 
-QVector<int> DivideAndConquer::merge(const QVector<QPoint> &pointsArray, QVector<int> &pointsIndexes, QVector<int> left, QVector<int> right)
+QVector<int> DivideAndConquer::merge(const QVector<QPoint> &pointsArray, QVector<int> left, QVector<int> right)
 {
     QVector<int> result;
 

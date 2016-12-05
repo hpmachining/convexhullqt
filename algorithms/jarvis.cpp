@@ -1,4 +1,5 @@
 #include "jarvis.h"
+#include <cmath>
 
 int Jarvis::getSideSign(QPoint a, QPoint b, QPoint c)
 {
@@ -10,9 +11,9 @@ int Jarvis::getSideSign(QPoint a, QPoint b, QPoint c)
 double Jarvis::dist(QPoint a, QPoint b)
 {
     return sqrt( static_cast<double>(a.x() - b.x()) *
-                 static_cast<double>(a.x() - b.x()) +
-                 static_cast<double>(a.y() - b.y()) *
-                 static_cast<double>(a.y() - b.y()));
+                      static_cast<double>(a.x() - b.x()) +
+                      static_cast<double>(a.y() - b.y()) *
+                      static_cast<double>(a.y() - b.y()));
 }
 
 bool Jarvis::isInside(QPoint a, QPoint b, QPoint c)

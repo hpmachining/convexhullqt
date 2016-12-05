@@ -26,9 +26,9 @@ signals:
 public:
     void run();
     void setInputData(int speed, const QVector<QPoint> &pointsArray);
-    void convexHull(const QVector<QPoint> &pointsArray, QVector<int> &convexHull);
+    void convexHull(const QVector<QPoint> &pointsArray);
     QVector<int> getHullFromSlice(const QVector<QPoint> &pointsArray, QVector<int> &pointsIndexes, int from, int to);
-    QVector<int> merge(const QVector<QPoint> &pointsArray, QVector<int> &pointsIndexes, QVector<int> left, QVector<int> right);
+    QVector<int> merge(const QVector<QPoint> &pointsArray, QVector<int> left, QVector<int> right);
 public slots:
     void setSpeed(int speed);
 };

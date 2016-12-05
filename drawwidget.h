@@ -1,5 +1,6 @@
 #ifndef DRAWWIDGET_H
 #define DRAWWIDGET_H
+#include <memory>
 #include <QVector>
 #include <QPoint>
 #include <QWidget>
